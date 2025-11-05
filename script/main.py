@@ -50,7 +50,7 @@ def run_trial(sequence_name, sequence):
     present_for(*dots)
     good_dot = exp.keyboard.wait() #TODO
     i = 3
-    while good_dot and i <= MAX_SEQ_SIZE :
+    while not(good_dot) and i <= MAX_SEQ_SIZE :
         timed_draw(*dots)
         for j in range(i):
             present_for(*dots + [triggered_dots[sequence[j]]])
@@ -63,7 +63,9 @@ def run_trial(sequence_name, sequence):
 def init_exp():
     sequences_ez = randomize_start(C_sequences_ez)
     sequences = randomize_start(C_sequences)
+    sequences.append() #TODO
     sequences = randomize_order(sequences)
+    return sequences_ez, sequences
 
 """ Global settings """
 control.initialize(exp)
@@ -82,10 +84,10 @@ load(triggered_dots)
 
 """ Experiment """
 
-sequences_ez = randomize_start(C_sequences_ez)
-sequences = randomize_start(C_sequences)
-sequences = randomize_order(sequences)
-run_trial(sequences_ez[0][1], sequences_ez[0][0])
+sequences_ez, sequences = init_exp()
+
+for i in range(len(sequences)):
+    run_trial(sequences_ez[0][1], sequences_ez[0][0])
 exp.keyboard.wait()
 
 control.end()

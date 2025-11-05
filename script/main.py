@@ -58,6 +58,7 @@ def run_trial(sequence_name, sequence):
         timed_draw(*dots)
         good_dot = wait_for_dot_click(sequence[i], dot_positions)
         i += 1
+    exp.data.add([sequence_name,sequence[0], i - 3])
 
 
 

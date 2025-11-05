@@ -22,13 +22,6 @@ def timed_draw(*stims):
     t1 = exp.clock.time
     return t1 - t0
 
-def timed_add(*stims): #same as timed draw but without clear
-    t0 = exp.clock.time
-    for stim in stims:
-        stim.present(clear=False, update=False)
-    exp.screen.update()
-    t1 = exp.clock.time
-    return t1 - t0
 
 def present_for(*stims, t=1000):
     dt = timed_draw(*stims)
@@ -50,8 +43,21 @@ def randomize_start(sequences):
 def create_random_seq():
     return 0 #TODO
 
-def run_trial(trial_id, sequence):
-    timed_draw(*dots)
+def run_trial(sequence_name, sequence):
+    present_for(*dots)
+    present_for(*dots + [triggered_dots[sequence[0]]])
+    present_for(*dots + [triggered_dots[sequence[1]]])
+    present_for(*dots)
+    good_dot = exp.keyboard.wait() #TODO
+    i = 3
+    while good_dot and i <= MAX_SEQ_SIZE :
+        timed_draw(*dots)
+        for j in range(i):
+            present_for(*dots + [triggered_dots[sequence[j]]])
+        timed_draw(*dots)
+        good_dot = exp.keyboard.wait() #TODO
+        i += 1
+
 
 
 def init_exp():
@@ -67,6 +73,7 @@ control.set_develop_mode()
 control.initialize(exp)
 
 """ Stimuli """
+
 dots = [stimuli.Circle(radius = DOT_RADIUS, colour = DOT_COLOR, position = p) for p in dot_positions]
 load(dots)
 
@@ -75,7 +82,10 @@ load(triggered_dots)
 
 """ Experiment """
 
-timed_draw(*dots)
+sequences_ez = randomize_start(C_sequences_ez)
+sequences = randomize_start(C_sequences)
+sequences = randomize_order(sequences)
+run_trial(sequences_ez[0][1], sequences_ez[0][0])
 exp.keyboard.wait()
 
 control.end()

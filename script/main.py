@@ -77,7 +77,8 @@ def run_trial(sequence_name, sequence):
 def init_exp():
     sequences_ez = randomize_start(C_sequences_ez)
     sequences = randomize_start(C_sequences)
-    # sequences.append() #TODO
+    sequences.append(create_random_seq())
+    sequences.append(create_random_seq())
     sequences = randomize_order(sequences)
     return sequences_ez, sequences
 
@@ -101,11 +102,7 @@ load(clicked_dots)
 
 """ Experiment """
 
-sequences_ez = randomize_start(C_sequences_ez)
-sequences = randomize_start(C_sequences)
-# sequences.append() #TODO
-sequences = randomize_order(sequences)
-print(sequences_ez)
+sequences_ez, sequences = init_exp()
 
 run_trial(sequences_ez[0][1], sequences_ez[0][0])
 run_trial(sequences_ez[1][1], sequences_ez[1][0])

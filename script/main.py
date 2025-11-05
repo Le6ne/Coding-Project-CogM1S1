@@ -52,15 +52,24 @@ def run_trial(sequence_name, sequence):
     present_for(*dots + [triggered_dots[sequence[1]]])
     timed_draw(*dots)
     good_dot = wait_for_dot_click(sequence[2], dot_positions)
-    i = 3
+    i = 2
+    while good_dot and i <= MAX_SEQ_SIZE :
+        timed_draw(*dots + [clicked_dots[sequence[i%NUM_OF_DOT]]])
+        i+=1
+        good_dot = wait_for_dot_click(sequence[i%NUM_OF_DOT], dot_positions)
+
     while not(good_dot) and i <= MAX_SEQ_SIZE :
         present_for(*dots)
         for j in range(i):
-            present_for(*dots + [triggered_dots[sequence[j]]])
+            present_for(*dots + [triggered_dots[sequence[j%NUM_OF_DOT]]])
         timed_draw(*dots)
-        good_dot = wait_for_dot_click(sequence[i], dot_positions)
+        good_dot = wait_for_dot_click(sequence[i%NUM_OF_DOT], dot_positions)
+        while good_dot and i <= MAX_SEQ_SIZE :
+            timed_draw(*dots + [clicked_dots[sequence[i%NUM_OF_DOT]]])
+            i+=1
+            good_dot = wait_for_dot_click(sequence[i%NUM_OF_DOT], dot_positions)
         i += 1
-    exp.data.add([sequence_name,sequence[0], i - 3])
+    # exp.data.add([sequence_name,sequence[0], i - 3])
     present_instructions(END_INSTRUCTION_SEQUENCE)
 
 
@@ -87,6 +96,9 @@ load(dots)
 triggered_dots = [stimuli.Circle(radius = TRIGGERED_DOT_RADIUS, colour = TRIGGERED_DOT_COLOR, position = p) for p in dot_positions]
 load(triggered_dots)
 
+clicked_dots = [stimuli.Circle(radius = TRIGGERED_DOT_RADIUS, colour = CLICKED_DOT_COLOR, position = p) for p in dot_positions]
+load(clicked_dots)
+
 """ Experiment """
 
 sequences_ez = randomize_start(C_sequences_ez)
@@ -98,7 +110,7 @@ print(sequences_ez)
 run_trial(sequences_ez[0][1], sequences_ez[0][0])
 run_trial(sequences_ez[1][1], sequences_ez[1][0])
 for i in range(len(sequences)):
-    present_instructions(INBETWEEN_INSTRUCTION.format(current=i+1,total=total_sequences))
+    present_instructions(INBETWEEN_INSTRUCTION[0] + str(i+2) + "/" + str(len(sequences) + 2))
     run_trial(sequences[i][1], sequences[i][0])
 exp.keyboard.wait()
 present_instructions(FINISH_INSTRUCTION)

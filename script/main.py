@@ -48,10 +48,12 @@ def randomize_start(sequences):
     return seq_out
 
 def run_trial(trial_id, trial_type):
-    present_for()
+    timed_draw(*dots)
 
 def init_exp():
-    return 0
+    sequences_ez = randomize_start(C_sequences_ez)
+    sequences = randomize_start(C_sequences)
+    sequences = randomize_order(sequences)
 
 """ Global settings """
 control.initialize(exp)

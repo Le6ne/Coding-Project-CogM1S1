@@ -41,7 +41,7 @@ C_sequences = [(np.asarray([0,2,4,6,1,3,5,7]), "2squares cw"),
                 (np.asarray([1,2,3,4,0,7,6,5]), "2arcs cw"), 
                 (np.asarray([0,7,6,5,1,2,3,4]), "2arcs ccw"), 
                 (np.asarray([0,1,7,2,6,3,5,4]), "4segments cw"), 
-                (np.asarray([1,0,2,7,3,6,4,5]), "4segment ccw"), #TODO: 2 autres symetries
+                (np.asarray([1,0,2,7,3,6,4,5]), "4segment ccw"), 
                 (np.asarray([0,5,4,1,6,3,2,7]), "2rectangles"), 
                 (np.asarray([0,4,5,1,2,6,7,3]), "2crosses") 
                 ]

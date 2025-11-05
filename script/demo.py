@@ -113,10 +113,10 @@ load(clicked_dots)
 
 sequences_ez, sequences = init_exp()
 
-present_instructions(INBETWEEN_INSTRUCTION[0] + str(1) + "/" + 3)
+present_instructions(INBETWEEN_INSTRUCTION[0] + str(1) + "/" + str(3))
 run_trial(sequences_ez[0][1], sequences_ez[0][0])
 for i in range(2):
-    present_instructions(INBETWEEN_INSTRUCTION[0] + str(i+2) + "/" + 3)
+    present_instructions(INBETWEEN_INSTRUCTION[0] + str(i+2) + "/" + str(3))
     run_trial(sequences[i][1], sequences[i][0])
 exp.keyboard.wait()
 present_instructions(FINISH_INSTRUCTION)

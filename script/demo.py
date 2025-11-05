@@ -41,8 +41,17 @@ def randomize_start(sequences):
     seq_out = [((a[0] + rd.randint(0,7)) % NUM_OF_DOT, a[1]) for a in sequences]
     return seq_out
 
-def create_random_seq():
-    return 0 #TODO
+def create_random_seq(length=16, num_dots=8):
+    seq = []
+    current = rd.randint(0, num_dots-1)
+    seq.append(current)
+    for _ in range(length-1):
+        next_dot = rd.randint(0, num_dots-1)
+        while next_dot == current:
+            next_dot = rd.randint(0, num_dots-1)
+        seq.append(next_dot)
+        current = next_dot
+    return np.asarray(seq)
 
 def run_trial(sequence_name, sequence):
     present_instructions(FIRST_INSTRUCTION)
@@ -78,8 +87,8 @@ def run_trial(sequence_name, sequence):
 def init_exp():
     sequences_ez = randomize_start(C_sequences_ez)
     sequences = randomize_start(C_sequences)
-    sequences.append(create_random_seq())
-    sequences.append(create_random_seq())
+    # sequences.append(create_random_seq()) #DEMO !
+    # sequences.append(create_random_seq())
     sequences = randomize_order(sequences)
     return sequences_ez, sequences
 

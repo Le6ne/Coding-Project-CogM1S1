@@ -23,7 +23,9 @@ EXPLANATION_INSTRUCTION = " A simple sequence will be presented. This is just a 
 FIRST_INSTRUCTION = "A sequence will be presented. The first two elements will be displayed, please click on the dot that you think will follow."
 INSTRUCTION_CORRECT = " You correctly identified the following location. Please click on the next location you believe will follow."
 INSTRUCTION_INCORRECT = " You incorrectly guessed the following location. The sequence will replay with the correct answer. please click on the dot that you think will follow."
-
+END_INSTRUCTION_SEQUENCE = "This sequence is finished."
+INBETWEEN_INSTRUCTION = "This is sequence","out of 16."
+FINISH_INSTRUCTION = "All the sequences have been done. You are done with the experiment. Thank you for participating"
 """
 Sequences
 """

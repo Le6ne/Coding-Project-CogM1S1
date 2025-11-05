@@ -20,7 +20,6 @@ MAX_SEQ_SIZE = 16
 """
 INSTRUCTIONS
 """
-EXPLANATION_INSTRUCTION = " A simple sequence will be presented. This is just a trial sequence to help you visualize. This is not part of the trial, please just observe."
 FIRST_INSTRUCTION = "A sequence will be presented. The first two elements will be displayed, please click on the dot that you think will follow."
 INSTRUCTION_CORRECT = " You correctly identified the following location. Please click on the next location you believe will follow."
 INSTRUCTION_INCORRECT = " You incorrectly guessed the following location. The sequence will replay with the correct answer. please click on the dot that you think will follow."

@@ -27,7 +27,6 @@ def randomize_start2(sequences):
         seq_out.append(rotated_seq)
     return seq_out
 
------
 # ========== CONVERSION FORMAT ==========
 def convert_sequences_to_standard_format(sequences):
     """
@@ -97,7 +96,6 @@ def sample_irregular_sequences(irregular_pool, num_sequences=9):
     
     return rd.sample(irregular_pool, num_sequences)
 
-----
 # CONDITIONS 
 def is_regular_sequence(seq):#    Vérifie si une séquence est régulière (pattern constant).
     if len(seq) < 2:
@@ -161,7 +159,7 @@ def has_symmetry(seq):#    Vérifie s'il y a une symétrie dans la séquence.
     
     return False
 
-ef has_obvious_pattern(seq):#    Détecte des patterns visuels évidents :
+def has_obvious_pattern(seq):#    Détecte des patterns visuels évidents :
     # Alternance simple (ex: 0, 2, 0, 2, 0, 2...)/  Motifs trop prévisibles
     positions = [s[0] for s in seq]
     
@@ -219,9 +217,8 @@ def is_valid_irregular_sequence(seq, regular_sequences):
     if has_obvious_pattern(seq):
         return False
     
-    return True
 
-    if is_too_similar_to_regular(seq, regular_sequences)
+    if is_too_similar_to_regular(seq, regular_sequences) :
         return False
     
     return True

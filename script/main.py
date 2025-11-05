@@ -47,8 +47,12 @@ def randomize_start(sequences):
     seq_out = [((a[0] + rd.randint(0,7)) % NUM_OF_DOT, a[1]) for a in sequences]
     return seq_out
 
-def run_trial(trial_id, trial_type):
+def create_random_seq():
+    return 0 #TODO
+
+def run_trial(trial_id, sequence):
     timed_draw(*dots)
+
 
 def init_exp():
     sequences_ez = randomize_start(C_sequences_ez)

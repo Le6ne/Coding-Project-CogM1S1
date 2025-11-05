@@ -12,16 +12,8 @@ It is developed using **Expyriment**, a Python framework for cognitive psycholog
 
 ## Repository Structure
 
+<img width="660" height="276" alt="image" src="https://github.com/user-attachments/assets/7b506974-75c2-4a12-91ed-ca4e815aafa9" />
 
-│
-├── Script/
-│ ├── main.py # Main experiment script
-│ ├── constants.py # Global parameters (colors, radius, duration, etc.)
-│ ├── functions.py # Functions for generating and randomizing sequences
-│ └── mouse_function.py # Mouse input and response handling
-│
-├── Datas/ # Folder where Expyriment saves the results (.xpd)
-└── README.md # This file :)
 
 
 ---

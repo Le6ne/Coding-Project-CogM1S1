@@ -43,7 +43,7 @@ def convert_sequences_to_standard_format(sequences):
 C_sequences_ez_converted = convert_sequences_to_standard_format(C_sequences_ez)
 C_sequences_converted = convert_sequences_to_standard_format(C_sequences)
 
-regular_sequences_full = C_sequences_ez_converted + C_sequences_converted
+regular_sequences = C_sequences_ez_converted + C_sequences_converted
 
 
 # CREATED IRR SEQ 
@@ -184,9 +184,9 @@ ef has_obvious_pattern(seq):#    Détecte des patterns visuels évidents :
     
     return False
 
-def is_too_similar_to_regular(seq, regular_sequences):#    Vérifie si la séquence est trop similaire à une séquence régulière.
+def is_too_similar_to_regular(seq, regular_sequences): #    Vérifie si la séquence est trop similaire à une séquence régulière.
     #Compare avec toutes les rotations et directions possibles.
-    for reg in regular_seqs:
+    for reg in regular_sequences:
         # Comparaison directe
         if seq == reg:
             return True
@@ -239,8 +239,7 @@ def init_exp_irr_pool():
     selected_irregular = sample_irregular_sequences(irregular_pool, num_sequences=9)
     
     # Combiner avec les 8 séquences régulières (versions complètes pour l'expérience)
-    regular_sequences_full = C_sequences_ez + C_sequences  # Vos vraies séquences
-    all_sequences = regular_sequences_full + selected_irregular
+    all_sequences = regular_sequencesl + selected_irregular
     
     # Randomiser positions de départ
     all_sequences = randomize_start(all_sequences)

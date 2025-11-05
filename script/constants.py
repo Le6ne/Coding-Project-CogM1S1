@@ -20,7 +20,9 @@ TRIGGERED_DOT_COLOR = "yellow"
 INSTRUCTIONS
 """
 
-FIRST_INSTRUCTION = ""
+FIRST_INSTRUCTION = "A sequence will be presented. The first two elements will be displayed, please click on the dot that you think will follow."
+INSTRUCTION_CORRECT = " You correctly identified the following location. Please click on the next location you believe will follow."
+INSTRUCTION_INCORRECT = " You incorrectly guessed the following location. The sequence will replay with the correct answer. please click on the dot that you think will follow."
 
 """
 Sequences

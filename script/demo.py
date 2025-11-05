@@ -4,10 +4,9 @@ from constants import *
 from mouse_function import *
 import random as rd
 
-exp = design.Experiment(name="test", background_colour=C_BLACK, foreground_colour=C_WHITE)
+exp = design.Experiment(name="demo", background_colour=C_BLACK, foreground_colour=C_WHITE)
 exp.add_data_variable_names(['seq_type','start_point','number_of_error'])
 
-control.set_develop_mode()
 
 """ Helper functions """
 def load(stims):

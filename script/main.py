@@ -44,14 +44,14 @@ def randomize_order(sequences):
     return seq_out
 
 def randomize_start(sequences):
-    seq_out = [((a[0] + rd.randint(0,7)) % NUM_OF_DOT, a[1]) for a in sequences ]
+    seq_out = [((a[0] + rd.randint(0,7)) % NUM_OF_DOT, a[1]) for a in sequences]
     return seq_out
 
 def run_trial(trial_id, trial_type):
     present_for()
 
 def init_exp():
-
+    return 0
 
 """ Global settings """
 control.initialize(exp)

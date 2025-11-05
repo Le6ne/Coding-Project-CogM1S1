@@ -1,5 +1,6 @@
 from expyriment import design, control, stimuli
 from expyriment.misc.constants import C_WHITE, C_BLACK
+from constants import *
 
 exp = design.Experiment(name="test", background_colour=C_WHITE, foreground_colour=C_BLACK)
 exp.add_data_variable_names([])
@@ -29,9 +30,15 @@ def present_instructions(text):
     instructions.present()
     exp.keyboard.wait()
 
+def run_trial(trial_id, trial_type):
+    present_for()
 
+""" Global settings """
+control.initialize(exp)
+control.start(subject_id=1)
+
+control.set_develop_mode()
+control.initialize(exp)
 """ Experiment """
 
 
-control.initialize(exp)
-control.start(subject_id=1)

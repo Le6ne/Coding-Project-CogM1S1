@@ -104,7 +104,9 @@ load(clicked_dots)
 
 sequences_ez, sequences = init_exp()
 
+present_instructions(INBETWEEN_INSTRUCTION[0] + str(1) + "/" + str(len(sequences) + 2))
 run_trial(sequences_ez[0][1], sequences_ez[0][0])
+present_instructions(INBETWEEN_INSTRUCTION[0] + str(2) + "/" + str(len(sequences) + 2))
 run_trial(sequences_ez[1][1], sequences_ez[1][0])
 for i in range(len(sequences)):
     present_instructions(INBETWEEN_INSTRUCTION[0] + str(i+2) + "/" + str(len(sequences) + 2))

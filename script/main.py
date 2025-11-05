@@ -48,11 +48,11 @@ def run_trial(sequence_name, sequence):
     present_for(*dots)
     present_for(*dots + [triggered_dots[sequence[0]]])
     present_for(*dots + [triggered_dots[sequence[1]]])
-    present_for(*dots)
+    timed_draw(*dots)
     good_dot = wait_for_dot_click(sequence[2], dot_positions)
     i = 3
     while not(good_dot) and i <= MAX_SEQ_SIZE :
-        timed_draw(*dots)
+        present_for(*dots)
         for j in range(i):
             present_for(*dots + [triggered_dots[sequence[j]]])
         timed_draw(*dots)

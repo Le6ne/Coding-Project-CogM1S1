@@ -4,7 +4,7 @@ from constants import *
 import random as rd
 
 exp = design.Experiment(name="test", background_colour=C_BLACK, foreground_colour=C_WHITE)
-exp.add_data_variable_names(['subj_id','seq_type','start_point','incorrect_el','correct_el'])
+exp.add_data_variable_names(['subj_id','seq_type','start_point','number_of_error'])
 
 control.set_develop_mode()
 

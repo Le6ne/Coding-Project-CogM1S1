@@ -57,8 +57,7 @@ def run_trial(sequence_name, sequence):
         timed_draw(*dots + [clicked_dots[sequence[i%NUM_OF_DOT]]])
         i+=1
         good_dot = wait_for_dot_click(sequence[i%NUM_OF_DOT], dot_positions)
-        if not good_dot :
-            i+=1
+    i+=1
 
     while not(good_dot) and i <= MAX_SEQ_SIZE :
         present_for(*dots)
@@ -89,7 +88,6 @@ control.initialize(exp)
 control.start(subject_id=1)
 
 control.set_develop_mode()
-control.initialize(exp)
 
 """ Stimuli """
 

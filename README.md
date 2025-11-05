@@ -12,7 +12,9 @@ It is developed using **Expyriment**, a Python framework for cognitive psycholog
 
 ## Repository Structure
 
-<img width="660" height="276" alt="image" src="https://github.com/user-attachments/assets/7b506974-75c2-4a12-91ed-ca4e815aafa9" />
+
+<img width="650" height="337" alt="image" src="https://github.com/user-attachments/assets/0ed88edf-37c3-49a7-9e83-45b1316b7f2c" />
+
 
 
 

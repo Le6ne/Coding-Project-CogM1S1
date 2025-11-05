@@ -96,7 +96,6 @@ def init_exp():
 control.initialize(exp)
 control.start(subject_id=1)
 
-control.set_develop_mode()
 
 """ Stimuli """
 

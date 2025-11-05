@@ -1,6 +1,7 @@
 from expyriment import design, control, stimuli
 from expyriment.misc.constants import C_WHITE, C_BLACK
 from constants import *
+import random as rd
 
 exp = design.Experiment(name="test", background_colour=C_BLACK, foreground_colour=C_WHITE)
 exp.add_data_variable_names([])
@@ -38,8 +39,19 @@ def present_instructions(text):
     instructions.present()
     exp.keyboard.wait()
 
+def randomize_order(sequences):
+    seq_out = rd.shuffle(sequences)
+    return seq_out
+
+def randomize_start(sequences):
+    seq_out = [((a[0] + rd.randint(0,7)) % NUM_OF_DOT, a[1]) for a in sequences ]
+    return seq_out
+
 def run_trial(trial_id, trial_type):
     present_for()
+
+def init_exp():
+
 
 """ Global settings """
 control.initialize(exp)
@@ -58,7 +70,6 @@ load(triggered_dots)
 """ Experiment """
 
 timed_draw(*dots)
-
 exp.keyboard.wait()
 
 control.end()

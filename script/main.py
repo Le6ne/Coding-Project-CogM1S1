@@ -1,6 +1,7 @@
 from expyriment import design, control, stimuli
 from expyriment.misc.constants import C_WHITE, C_BLACK
 from constants import *
+from mouse_function import *
 import random as rd
 
 exp = design.Experiment(name="test", background_colour=C_BLACK, foreground_colour=C_WHITE)
@@ -33,8 +34,8 @@ def present_instructions(text):
     exp.keyboard.wait()
 
 def randomize_order(sequences):
-    seq_out = rd.shuffle(sequences)
-    return seq_out
+    rd.shuffle(sequences)
+    return sequences
 
 def randomize_start(sequences):
     seq_out = [((a[0] + rd.randint(0,7)) % NUM_OF_DOT, a[1]) for a in sequences]
@@ -48,14 +49,14 @@ def run_trial(sequence_name, sequence):
     present_for(*dots + [triggered_dots[sequence[0]]])
     present_for(*dots + [triggered_dots[sequence[1]]])
     present_for(*dots)
-    good_dot = exp.keyboard.wait() #TODO
+    good_dot = wait_for_dot_click(sequence[2], dot_positions)
     i = 3
     while not(good_dot) and i <= MAX_SEQ_SIZE :
         timed_draw(*dots)
         for j in range(i):
             present_for(*dots + [triggered_dots[sequence[j]]])
         timed_draw(*dots)
-        good_dot = exp.keyboard.wait() #TODO
+        good_dot = wait_for_dot_click(sequence[i], dot_positions)
         i += 1
 
 
@@ -63,7 +64,7 @@ def run_trial(sequence_name, sequence):
 def init_exp():
     sequences_ez = randomize_start(C_sequences_ez)
     sequences = randomize_start(C_sequences)
-    sequences.append() #TODO
+    # sequences.append() #TODO
     sequences = randomize_order(sequences)
     return sequences_ez, sequences
 
@@ -84,10 +85,16 @@ load(triggered_dots)
 
 """ Experiment """
 
-sequences_ez, sequences = init_exp()
+sequences_ez = randomize_start(C_sequences_ez)
+sequences = randomize_start(C_sequences)
+# sequences.append() #TODO
+sequences = randomize_order(sequences)
+print(sequences_ez)
 
+run_trial(sequences_ez[0][1], sequences_ez[0][0])
+run_trial(sequences_ez[1][1], sequences_ez[1][0])
 for i in range(len(sequences)):
-    run_trial(sequences_ez[0][1], sequences_ez[0][0])
+    run_trial(sequences[i][1], sequences[i][0])
 exp.keyboard.wait()
 
 control.end()

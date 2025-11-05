@@ -67,8 +67,9 @@ def run_trial(sequence_name, sequence):
         i+=1
         good_dot = wait_for_dot_click(sequence[i%NUM_OF_DOT], dot_positions)
     i+=1
-
+    error = 0
     while not(good_dot) and i <= MAX_SEQ_SIZE/2 :
+        error += 1
         present_for(*dots)
         for j in range(i):
             present_for(*dots + [triggered_dots[sequence[j%NUM_OF_DOT]]])
@@ -79,7 +80,7 @@ def run_trial(sequence_name, sequence):
             i+=1
             good_dot = wait_for_dot_click(sequence[i%NUM_OF_DOT], dot_positions)
         i += 1
-    # exp.data.add([sequence_name,sequence[0], i - 3])
+    exp.data.add([sequence_name,sequence[0], error])
     present_instructions(END_INSTRUCTION_SEQUENCE)
 
 

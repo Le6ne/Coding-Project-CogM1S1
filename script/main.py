@@ -45,6 +45,8 @@ def create_random_seq():
     return 0 #TODO
 
 def run_trial(sequence_name, sequence):
+    present_instructions(FIRST_INSTRUCTION)
+    
     present_for(*dots)
     present_for(*dots + [triggered_dots[sequence[0]]])
     present_for(*dots + [triggered_dots[sequence[1]]])
@@ -59,6 +61,7 @@ def run_trial(sequence_name, sequence):
         good_dot = wait_for_dot_click(sequence[i], dot_positions)
         i += 1
     exp.data.add([sequence_name,sequence[0], i - 3])
+    present_instructions(END_INSTRUCTION_SEQUENCE)
 
 
 
@@ -95,7 +98,8 @@ print(sequences_ez)
 run_trial(sequences_ez[0][1], sequences_ez[0][0])
 run_trial(sequences_ez[1][1], sequences_ez[1][0])
 for i in range(len(sequences)):
+    present_instructions(INBETWEEN_INSTRUCTION.format(current=i+1,total=total_sequences))
     run_trial(sequences[i][1], sequences[i][0])
 exp.keyboard.wait()
-
+present_instructions(FINISH_INSTRUCTION)
 control.end()

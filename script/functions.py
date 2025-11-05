@@ -28,6 +28,23 @@ def randomize_start2(sequences):
     return seq_out
 
 -----
+# ========== CONVERSION FORMAT ==========
+def convert_sequences_to_standard_format(sequences):
+    """
+    Convertit les séquences du format (np.array, string) vers [(position, direction), ...]
+    """
+    converted = []
+    for seq_array, direction_str in sequences:
+        direction = 1 if "cw" in direction_str.lower() else -1
+        seq = [(int(pos), direction) for pos in seq_array]
+        converted.append(seq)
+    return converted
+
+C_sequences_ez_converted = convert_sequences_to_standard_format(C_sequences_ez)
+C_sequences_converted = convert_sequences_to_standard_format(C_sequences)
+
+regular_sequences_full = C_sequences_ez_converted + C_sequences_converted
+
 
 # CREATED IRR SEQ 
 def generate_all_possible_sequences(length=3):

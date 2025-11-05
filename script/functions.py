@@ -1,4 +1,4 @@
-def create_random_seq(length=8, num_dots=8):
+def create_random_seq(length=16, num_dots=8):
     seq = []
     current = rd.randint(0, num_dots-1)
     seq.append(current)
